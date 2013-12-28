@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('home');
 });
 
 Route::get('/users', function()
@@ -22,3 +22,6 @@ Route::get('/users', function()
 
 	return View::make('users')->with('users', $users);
 });
+
+Route::get('login', 'SessionController@showLogin');
+Route::post('login', 'SessionController@tryLogin');
