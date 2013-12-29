@@ -4,6 +4,6 @@ class Post extends Eloquent
 {
 	public function author()
 	{
-		return $this->belongsTo('User');
+		return $this->belongsTo('User', 'author', 'id');
 	}
 }

@@ -2,12 +2,13 @@
 
 @section('content')
 
-	@if (Session::get('flash_message'))
-		<div class="flash-message">
-			{{ Session::get('flash_message') }}
+	@foreach($posts as $post)
+		<div>
+			<h2>{{ $post->title }}</h2>
+			<p>{{ $post->body }}</p>
+			<p>By {{ $post->author()->first()->name }}</p>
+			<p>In {{ $post->created_at->format('d/m/Y') }} at {{ $post->created_at->format('H:i:s') }}</p>
 		</div>
-	@endif
+	@endforeach
 
-	Homepage
-	
 @stop

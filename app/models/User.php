@@ -11,7 +11,7 @@ class User extends Eloquent implements UserInterface
 
 	public function getAuthIdentifier()
 	{
-		return $this->username;
+		return $this->id;
 	}
 
 	public function getAuthPassword()

@@ -13,7 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('home');
+	$posts = Post::with('author')->orderBy('id', 'desc')->get();
+	return View::make('home')->with('posts', $posts);
 });
 
 Route::get('/users', function()
@@ -22,6 +23,11 @@ Route::get('/users', function()
 
 	return View::make('users')->with('users', $users);
 });
+
+Route::get('admin', ['before' => 'auth', function()
+{
+
+}]);
 
 Route::get('login', 'SessionController@showLogin');
 Route::post('login', 'SessionController@tryLogin');

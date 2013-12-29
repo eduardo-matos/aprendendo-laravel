@@ -5,11 +5,14 @@ class SessionController extends BaseController
 
 	public function showLogin()
 	{
+		if(Auth::check()) return Redirect::to('/');
 		return View::make('session.login');
 	}
 
 	public function tryLogin()
 	{
+		if(Auth::check()) Redirect::to('/');
+
 		$credentials = [
 			'username' => Input::get('username'),
 			'password' => Input::get('password')
